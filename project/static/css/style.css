@@ -1,0 +1,125 @@
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #3498db; /* Blue background */
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.2em;
+    margin: 0;
+    color: #fff; /* White text for header */
+  }
+  
+  /* Content */
+  .content {
+    display: flex; /* Arrange project list and add project sections side-by-side */
+    flex-wrap: wrap; /* Wrap sections if needed on smaller screens */
+    margin: 0 auto; /* Center the content horizontally */
+    max-width: 900px; /* Limit total content width for responsiveness */
+  }
+  
+  /* Project List */
+  .project-list {
+    width: 50%; /* Adjust width as needed for different screen layouts */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .project-list h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #3498db; /* Blue heading text */
+  }
+  
+  .project-item {
+    margin-bottom: 10px; /* Increased spacing between projects */
+    padding: 15px; /* Added padding for project items */
+    border-bottom: 1px solid #ddd; /* Subtle border between projects */
+    cursor: pointer; /* Hand cursor on hover for clickable projects */
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .project-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+  
+  .project-item a:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .empty-message {
+    text-align: center;
+    color: #ccc;
+    font-style: italic;
+  }
+  
+  /* Add Project Section */
+  .add-project {
+    width: 50%; /* Adjust width as needed for different screen layouts */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Lighter background for form */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-project h2 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: #3498db; /* Blue heading text */
+  }
+  
+  .add-project label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Darker text for labels */
+  }
+  
+  .add-project button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Blue button background */
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .add-project button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+  
+  /* Input Field Styling */
+  .add-project input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  /* Strikethrough for Completed Tasks */
+  .completed {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  /* New Features
+  

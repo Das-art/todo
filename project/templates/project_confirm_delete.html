@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Project</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: center;
+        }
+        input[type="submit"] {
+            width: 100px;
+            padding: 10px;
+            background-color: #dc3545;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+        a {
+            display: block;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Deletion</h1>
+        <p>Are you sure you want to delete "{{ project.title }}"?</p>
+        <div class="text-center">
+            <form action="{% url 'project_delete' project.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Confirm">
+            </form>
+            <a href="{% url 'project_list' %}">Cancel</a>
+        </div>
+    </div>
+</body>
+</html>

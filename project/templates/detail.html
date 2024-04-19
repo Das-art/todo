@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.title }}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .task-list {
+            background-color: #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .task-item {
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .task-actions {
+            margin-top: 10px;
+        }
+        .task-status {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .date-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .date-value {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .project-summary {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ project.title }}</h1>
+        <p class="project-summary">Summary: {{ completed_todos_count }} / {{ total_todos_count }} completed</p>
+        <p>Created Date: {{ project.created_date }}</p>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="task-list">
+                    <h2>Tasks</h2>
+                    <ul class="list-unstyled">
+                        {% for task in tasks %}
+                            <li class="task-item">
+                                <p>{{ task.description }}</p>
+                                <div class="task-status">
+                                    {% if task.status %}
+                                        <span class="text-success">Completed</span>
+                                    {% else %}
+                                        <span class="text-danger">Incomplete</span>
+                                    {% endif %}
+                                </div>
+                                <div class="task-dates">
+                                    <span class="date-label">Created Date:</span>
+                                    <span class="date-value">{{ task.created_date }}</span><br>
+                                    <span class="date-label">Updated Date:</span>
+                                    <span class="date-value">{{ task.updated_date }}</span>
+                                </div>
+                                <div class="task-actions">
+                                    <a href="{% url 'task_edit' project.id task.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                    <form action="{% url 'task_delete' project.id task.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    </form>
+                                </div>
+                            </li>
+                        {% empty %}
+                            <li>No tasks for this project yet.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-actions">
+                    <a href="{% url 'task_add' project.id %}" class="btn btn-success btn-block my-2">Add Task</a>
+                    <a href="{% url 'project_edit' project.id %}" class="btn btn-primary btn-block my-2">Edit Project</a>
+                    <form action="{% url 'project_delete' project.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete Project" class="btn btn-danger btn-block my-2">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
